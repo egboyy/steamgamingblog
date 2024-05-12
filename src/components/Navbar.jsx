@@ -1,3 +1,4 @@
+// Navbar.js
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -10,17 +11,36 @@ const Navbar = () => {
         <div className="flex space-x-4">
           <div className="text-lg font-bold">Gaming Blog</div>
           <div className="space-x-4">
-            <Link to="/" className={`px-4 hover:text-green-400 ${location.pathname === '/' ? 'text-green-400' : ''}`}>
+            <Link
+              to="/"
+              className={`px-4 hover:text-green-400 ${
+                location.pathname === "/" ? "text-green-400" : ""
+              }`}
+            >
               Home
             </Link>
-            <Link to="/games" className={`px-4 hover:text-green-400 ${location.pathname === '/games' ? 'text-green-400' : ''}`}>
+            <Link
+              to="/games"
+              className={`px-4 hover:text-green-400 ${
+                location.pathname === "/games" ? "text-green-400" : ""
+              }`}
+            >
               Games
             </Link>
-            <Link to="/collections" className={`px-4 hover:text-green-400 ${location.pathname === '/collections' ? 'text-green-400' : ''}`}>
+            <Link
+              to="/collections"
+              className={`px-4 hover:text-green-400 ${
+                location.pathname === "/collections" ? "text-green-400" : ""
+              }`}
+            >
               Collections
             </Link>
-            <Link to="/wishlist" className={`px-4 hover:text-green-400 ${location.pathname === '/wishlist' ? 'text-green-400' : ''}`}>
-              Wishlist
+            <Link
+              to="/wishlist"
+              className={`px-4 hover:text-green-400 ${
+                location.pathname === "/wishlist" ? "text-green-400" : ""
+              }`}
+            > Wishlist
             </Link>
           </div>
         </div>
