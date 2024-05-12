@@ -1,17 +1,21 @@
 import React from "react";
 
-const GameCard = ({ deal, onAddToWishlist, wishlistItems = [] }) => {
+const GameCard = ({ deal, onAddToWishlist, onRemoveFromWishlist, wishlistItems = [] }) => {
 
   const isWishlisted = wishlistItems.some((item) => item.id === deal.id);
   const handleClick = () => {
-    onAddToWishlist(deal);
+    if (isWishlisted) {
+      onRemoveFromWishlist(deal.id); // Pass the id of the deal to remove it from wishlist
+    } else {
+      onAddToWishlist(deal);
+    }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden">
+    <article className="bg-white rounded-lg shadow-md overflow-hidden">
         <img
           src={`https://source.unsplash.com/random/300x200?game+${deal.name}`} 
-          alt={deal.name}
+          alt={`Thumbnail of ${deal.name} game`}
           className="w-full h-48 object-cover"
         />
         <div className="p-4">
@@ -22,17 +26,12 @@ const GameCard = ({ deal, onAddToWishlist, wishlistItems = [] }) => {
           </div>
           <button
             onClick={handleClick}
-            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 w-full ${
-              isWishlisted ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            disabled={isWishlisted} 
+            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 w-full ${isWishlisted ? "bg-red-500" : "bg-blue-500"}`}
           >
-            {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
+            {isWishlisted ? "Remove from Wishlist" : "Add to Wishlist"}
           </button>
         </div>
-      </div>
+      </article>
   );
 };
-
 export default GameCard;
-
